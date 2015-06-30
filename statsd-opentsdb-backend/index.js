@@ -13,7 +13,8 @@
  */
 
 var net = require('net'),
-   util = require('util');
+   util = require('util'),
+   os = require('os');
 
 var debug;
 var flushInterval;
@@ -74,7 +75,7 @@ var post_stats = function opentsdb_post_stats(statString) {
 // Returns a list of "tagname=tagvalue" strings from the given metric name.
 function parse_tags(metric_name) {
   var parts = metric_name.split(".");
-  var tags = [];
+  var tags = [os.hostname()];
   var current_tag_name = "";
   for (i in parts) {
     var p = parts[i]
