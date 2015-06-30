@@ -75,7 +75,7 @@ var post_stats = function opentsdb_post_stats(statString) {
 // Returns a list of "tagname=tagvalue" strings from the given metric name.
 function parse_tags(metric_name) {
   var parts = metric_name.split(".");
-  var tags = [os.hostname()];
+  var tags = ["host="+os.hostname()];
   var current_tag_name = "";
   for (i in parts) {
     var p = parts[i]
